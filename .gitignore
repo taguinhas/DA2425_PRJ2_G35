@@ -1,0 +1,7 @@
+*.exe
+*.out
+*.app
+.vscode
+output.txt
+**/
+.idea/
