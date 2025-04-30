@@ -14,7 +14,7 @@ std::vector<std::tuple<std::string, std::string>> read_truck(std::string truck){
     std::ifstream file("data/"+ truck + ".csv");
 
     if(!file.is_open()){
-        std::cerr << "Error opening file!" << std::endl;
+        std::cerr << "File with number " << truck << " doesn't exist!" << std::endl;
     }
 
     std::vector<std::tuple<std::string, std::string>> data;
@@ -28,6 +28,8 @@ std::vector<std::tuple<std::string, std::string>> read_truck(std::string truck){
         help.clear();
 
         while(getline(row, aux, ',')){
+            while(aux[0] == ' '){aux.erase(0, 1);}
+            while(aux[aux.size() - 1] == ' '){aux.erase(aux.size() - 1);}
             help.push_back(aux);
         }
 
@@ -58,7 +60,7 @@ std::vector<std::tuple<std::string, std::string, std::string>> read_pallets(std:
     std::ifstream file("data/"+ pallets + ".csv");
 
     if(!file.is_open()){
-        std::cerr << "Error opening file!" << std::endl;
+        std::cerr << "File with number " << pallets << " doesn't exist!" << std::endl;
     }
 
     std::vector<std::tuple<std::string, std::string, std::string>> data;
@@ -72,6 +74,8 @@ std::vector<std::tuple<std::string, std::string, std::string>> read_pallets(std:
         help.clear();
 
         while(getline(row, aux, ',')){
+            while(aux[0] == ' '){aux.erase(0, 1);}
+            while(aux[aux.size() - 1] == ' '){aux.erase(aux.size() - 1);}
             help.push_back(aux);
         }
 
