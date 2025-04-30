@@ -7,6 +7,36 @@
 #include <fstream>
 #include "read_files.cpp"
 #include "test.cpp"
+#include "algorithms/backtracking.cpp"
+#include "algorithms/brute-force.cpp"
+#include "algorithms/dynamic_programming_arrays.cpp"
+#include "algorithms/dynamic_programming_hash-maps.cpp"
+#include "algorithms/greedy_approximation.cpp"
+#include "algorithms/integer_linear_programming.cpp"
+
+void manage(int n){
+
+    switch(n) {
+        case 1:
+            brute_force();
+            break;
+        case 2:
+            backtracking();
+            break;
+        case 3:
+            dynamic_programming_arrays();
+            break;
+        case 4:
+            dynamic_programming_hash_maps();
+            break;
+        case 5:
+            greedy();
+            break;
+        case 6:
+            integer_linear_programming();
+            break;
+      }
+}
 
 int main() {
 
@@ -28,6 +58,19 @@ int main() {
     if(pallets.empty()){
         return 0;
     }
+
+    std::cout << "Choose the algorithmic approach you wish to take:\n1. Brute-Force\n2. Backtracking\n3. Dynamic Programming (using arrays)\n4. Dynamic Programming (using hash-maps)\n5. Greedy Approach (approximation)\n6. Interger Linear Programming\n";
+
+    std::string algorithm;
+    std::cin >> algorithm;
+    int option = std::stoi(algorithm);
+
+    if(option <= 0 || option > 6){
+        std::cout << "Invalid option.\n";
+        return 0;
+    }
+
+    manage(option);
 
     test(truck, pallets);
 
