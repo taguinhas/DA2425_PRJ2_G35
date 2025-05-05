@@ -14,11 +14,14 @@
 #include "algorithms/greedy_approximation.cpp"
 #include "algorithms/integer_linear_programming.cpp"
 
-void manage(int n){
+void manage(int n,
+    std::vector<std::tuple<std::string, std::string>> truck,
+    std::vector<std::tuple<std::string, std::string, std::string>> pallets
+){
 
     switch(n) {
         case 1:
-            brute_force();
+            brute_force(truck, pallets);
             break;
         case 2:
             backtracking();
@@ -70,9 +73,9 @@ int main() {
         return 0;
     }
 
-    manage(option);
+    manage(option, truck, pallets);
 
-    test(truck, pallets);
+    //test(truck, pallets);
 
     return 0;
     
