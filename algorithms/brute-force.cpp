@@ -6,8 +6,7 @@ void brute_force(
     std::vector<bool> &usedItems
 )
 {
-    
-    std::vector<bool> curCandidate(n_pallets, 0);
+    std::vector<bool> curCandidate(n_pallets, false);
 
     bool foundSol = false;
     int maxValue = 0;
@@ -23,7 +22,7 @@ void brute_force(
 
         if(totalWeight <= capacity) {
 
-            if(!foundSol || totalValue > maxValue) {
+            if(!foundSol || totalValue >= maxValue) {
                 foundSol = true;
                 maxValue = totalValue;
                 for(int k = 0; k < n_pallets; k++) {
@@ -37,10 +36,10 @@ void brute_force(
 
         while(curCandidate[curIndex]) {
             curIndex++;
-            if(curIndex == n_pallets) break;
+            if(curIndex == n_pallets) {break;}
         }
 
-        if(curIndex == n_pallets) break;
+        if(curIndex == n_pallets) {break;}
 
         for(int i = 0; i < curIndex; i++) {
             curCandidate[i] = false;
