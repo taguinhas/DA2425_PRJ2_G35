@@ -6,9 +6,7 @@ void brute_force(
     std::vector<bool> &usedItems
 )
 {
-
-    std::cout << "Working?";
-
+    
     std::vector<bool> curCandidate(n_pallets, 0);
 
     bool foundSol = false;
