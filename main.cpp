@@ -34,7 +34,7 @@ void manage(
             knapsackBT(values, weights, n_pallets, capacity, usedItems);
             break;
         case 3:
-            dynamic_programming_arrays();
+            dynamic_programming_arrays(values, weights, n_pallets, capacity, usedItems);
             break;
         case 4:
             dynamic_programming_hash_maps();
