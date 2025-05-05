@@ -1,4 +1,4 @@
-std::vector<std::tuple<std::string, std::string>> read_truck(std::string truck){
+void read_truck(std::string truck, int &capacity, int &n_pallets){
 
     if(truck.length() < 3){
         int nt = std::stoi(truck);
@@ -17,15 +17,15 @@ std::vector<std::tuple<std::string, std::string>> read_truck(std::string truck){
         std::cerr << "File with number " << truck << " doesn't exist!" << std::endl;
     }
 
-    std::vector<std::tuple<std::string, std::string>> data;
-    std::string aux, line;
+    std::string aux = "";
+    std::string line = "";
 
+    int i = 0;
     while (getline(file, line)){
         
         std::stringstream row(line);
 
-        std::vector<std::string> help;
-        help.clear();
+        std::vector<std::string> help = {};
 
         while(getline(row, aux, ',')){
             while(aux[0] == ' '){aux.erase(0, 1);}
@@ -33,18 +33,19 @@ std::vector<std::tuple<std::string, std::string>> read_truck(std::string truck){
             help.push_back(aux);
         }
 
-        std::tuple<std::string, std::string> 
-        list(help[0], help[1]);
+        if(i == 0){i++;continue;}
+        else{
+            capacity = std::stoi(help[0]);
+            n_pallets = std::stoi(help[1]);
+        }
 
-        data.push_back(list);
+        help.clear();
 
     }
 
-    return data;
-
 }
 
-std::vector<std::tuple<std::string, std::string, std::string>> read_pallets(std::string pallets){
+void read_pallets(std::string pallets, std::vector<int> &weights, std::vector<int> &values){
 
     if(pallets.length() < 3) {
         int pt = std::stoi(pallets);
@@ -63,15 +64,15 @@ std::vector<std::tuple<std::string, std::string, std::string>> read_pallets(std:
         std::cerr << "File with number " << pallets << " doesn't exist!" << std::endl;
     }
 
-    std::vector<std::tuple<std::string, std::string, std::string>> data;
-    std::string aux, line;
+    std::string aux = "";
+    std::string line = "";
 
+    int i = 0;
     while (getline(file, line)){
         
         std::stringstream row(line);
 
-        std::vector<std::string> help;
-        help.clear();
+        std::vector<std::string> help = {};
 
         while(getline(row, aux, ',')){
             while(aux[0] == ' '){aux.erase(0, 1);}
@@ -79,13 +80,14 @@ std::vector<std::tuple<std::string, std::string, std::string>> read_pallets(std:
             help.push_back(aux);
         }
 
-        std::tuple<std::string, std::string, std::string> 
-        list(help[0], help[1], help[2]);
+        if(i == 0){i++;continue;}
+        else{
+            weights.push_back(std::stoi(help[1]));
+            values.push_back(std::stoi(help[2]));
+        }
 
-        data.push_back(list);
+        help.clear();
 
     }
-
-    return data;
 
 }

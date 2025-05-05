@@ -1,26 +1,14 @@
 void test(
-    std::vector<std::tuple<std::string, std::string>> truck,
-    std::vector<std::tuple<std::string, std::string, std::string>> pallets
+    int &capacity,
+    int &n_pallets,
+    std::vector<int> &weights,
+    std::vector<int> &values
 )
 {
-    int i = 0;
-    for(std::tuple<std::string, std::string> t : truck){
-        if (i==0){
-            i++;
-            continue;
-        }
+    std::cout << "Truck has " << capacity << " capacity and there are " << n_pallets << " pallets\n";
 
-        std::cout << "Truck has " << std::get<0>(t) << " capacity and there are " << std::get<1>(t) << " pallets\n";
-    }
-
-    i=0;
-    for(std::tuple<std::string, std::string, std::string> p : pallets){
-        if (i==0){
-            i++;
-            continue;
-        }
-
-        std::cout << "Pallet number " << std::get<0>(p) << " has weight " << std::get<1>(p) << " and profit " << std::get<2>(p) << "\n";
+    for(int i = 1; i <= n_pallets; i++){
+        std::cout << "Pallet number " << i << " has weight " << weights[i-1] << " and profit " << values[i-1] << "\n";
     }
 
     return;
