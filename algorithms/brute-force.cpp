@@ -22,8 +22,15 @@ void brute_force(
 
         if(totalWeight <= capacity) {
 
-            if(!foundSol || totalValue >= maxValue) {
+            if(!foundSol || totalValue > maxValue) {
                 foundSol = true;
+                maxValue = totalValue;
+                for(int k = 0; k < n_pallets; k++) {
+                    usedItems[k] = curCandidate[k];
+                }
+            }
+
+            else if(totalValue == maxValue && std::count(curCandidate.begin(), curCandidate.end(), 1) < std::count(usedItems.begin(), usedItems.end(), 1)) {
                 maxValue = totalValue;
                 for(int k = 0; k < n_pallets; k++) {
                     usedItems[k] = curCandidate[k];

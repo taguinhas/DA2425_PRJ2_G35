@@ -1,42 +1,59 @@
-void knapsackRec(unsigned int values[], unsigned int weights[], unsigned int n, unsigned int maxWeight, unsigned int curIndex, unsigned int curValue, bool curItems[], unsigned int* maxValue, bool usedItems[]) {
-    //todos os n itens foram testados no branch atual?
-    if (curIndex == n) {
+void knapsackRec(
+    std::vector<int> &values,
+    std::vector<int> &weights,
+    int n_pallets,
+    int capacity,
+    int curIndex,
+    int curValue,
+    std::vector<bool> curItems,
+    int* maxValue,
+    std::vector<bool> &usedItems
+)
+{
+    //todos os n_pallets itens foram testados no branch atual?
+    if (curIndex == n_pallets) {
         //encontrei uma solução melhor?
         if (curValue > *maxValue) {
             *maxValue = curValue;
-            for (unsigned int i = 0; i < n; i++) {
+            for (int i = 0; i < n_pallets; i++) {
+                usedItems[i] = curItems[i];
+            }
+        }
+        else if (curValue == *maxValue && std::count(curItems.begin(), curItems.end(), 1) < std::count(usedItems.begin(), usedItems.end(), 1)){
+            *maxValue = curValue;
+            for (int i = 0; i < n_pallets; i++){
                 usedItems[i] = curItems[i];
             }
         }
     }
     else {
         //tentar incluir o item atual
-        if (weights[curIndex] <= maxWeight) {
+        if (weights[curIndex] <= capacity) {
             curItems[curIndex] = true;
-            knapsackRec(values, weights, n, maxWeight-weights[curIndex], curIndex + 1, curValue+values[curIndex], curItems, maxValue, usedItems);
+            knapsackRec(values, weights, n_pallets, capacity-weights[curIndex], curIndex + 1, curValue+values[curIndex], curItems, maxValue, usedItems);
         }
 
         //explore the path where we do not insert this object
         curItems[curIndex] = false;
-        knapsackRec(values, weights, n, maxWeight, curIndex + 1, curValue, curItems, maxValue, usedItems);
+        knapsackRec(values, weights, n_pallets, capacity, curIndex + 1, curValue, curItems, maxValue, usedItems);
     }
 }
 
-unsigned int knapsackBT(unsigned int values[], unsigned int weights[], unsigned int n, unsigned int maxWeight, bool usedItems[]) {
-    unsigned int maxValue = 0;
-    bool curItems[1000];
-
-    for (unsigned int i = 0; i < n; i++) {
-        curItems[i] = false;
-    }
+void knapsackBT(
+    std::vector<int> &values,
+    std::vector<int> &weights,
+    int &n_pallets,
+    int &capacity,
+    std::vector<bool> &usedItems
+)
+{
+    int maxValue = 0;
+    std::vector<bool> curItems(n_pallets, false);
 
     //encontrar possíveis soluções usando BackTracking
                                             //curIndex, curValue
-    knapsackRec(values, weights, n, maxWeight, 0, 0, curItems, &maxValue, usedItems);
+    knapsackRec(values, weights, n_pallets, capacity, 0, 0, curItems, &maxValue, usedItems);
 
-    return maxValue;
-}
+    output(capacity, n_pallets, weights, values, usedItems);
 
-void backtracking(){
-    std::cout << "Chose Backtracking\n";
 }

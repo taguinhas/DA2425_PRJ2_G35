@@ -5,6 +5,7 @@
 #include <vector>
 #include <tuple>
 #include <fstream>
+#include <algorithm>
 #include "read_files.cpp"
 #include "test.cpp"
 #include "makeOutput.cpp"
@@ -30,7 +31,7 @@ void manage(
             brute_force(capacity, n_pallets, weights, values, usedItems);
             break;
         case 2:
-            backtracking();
+            knapsackBT(values, weights, n_pallets, capacity, usedItems);
             break;
         case 3:
             dynamic_programming_arrays();
@@ -48,8 +49,6 @@ void manage(
 }
 
 int main() {
-
-    std::vector<std::tuple<std::string, std::string, std::string>> pallets;
 
     std::cout << "Input the number of the file (from 1 to 10) with information about the truck and the pallets.\n";
 
