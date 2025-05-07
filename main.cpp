@@ -37,7 +37,7 @@ void manage(
             dynamic_programming_arrays(values, weights, n_pallets, capacity, usedItems);
             break;
         case 4:
-            dynamic_programming_hash_maps();
+            dynamic_programming_hash_maps(values, weights, n_pallets, capacity, usedItems);
             break;
         case 5:
             greedy();
