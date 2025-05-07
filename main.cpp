@@ -40,7 +40,7 @@ void manage(
             dynamic_programming_hash_maps();
             break;
         case 5:
-            greedy();
+            greedy(values, weights, n_pallets, capacity, usedItems);
             break;
         case 6:
             integer_linear_programming();
