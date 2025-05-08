@@ -16,7 +16,7 @@ void greedy(
     // Sort indices by value-to-weight ratio in descending order
     std::sort(P.begin(), P.end(), [&](int i, int j) {
 
-        return  static_cast<double>(weights[i]) < static_cast<double>(weights[j]);
+        return  static_cast<double>(weights[i] / values[i]) < static_cast<double>(weights[j] / values[j]);
     });
 
     int maxValue = 0;
@@ -33,6 +33,9 @@ void greedy(
     }
 
     output(capacity, n_pallets, weights, values, usedItems);
+
+    //TODO dizer se está correto ou não, mostrar correto se não estiver,
+    //TODO perguntar à Doutora Vanessa como ela quer esta parte
 
     return;
 }
