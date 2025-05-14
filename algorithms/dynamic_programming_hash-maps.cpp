@@ -8,7 +8,7 @@ void dynamic_programming_hash_maps(
 {
     //hash map will look like this {[n_pallets, capacity], res}
 
-    std::unordered_map<std::pair<int, int>, int> aux;
+    std::unordered_map<std::pair<int, int>, int, int> aux;
     for (int i = 0; i < n_pallets + 1; i++){
         for(int j = 0; j < capacity + 1; j++){
             aux.insert({[i, j], 0});
@@ -17,6 +17,7 @@ void dynamic_programming_hash_maps(
 
     //!This is wrong
 
+   /*
     
     //step 2: Compute the DP using maxValue(i, k)' function of a) - "Recursion"
     for(int i = 1; i < n_pallets; i++){
@@ -51,6 +52,8 @@ void dynamic_programming_hash_maps(
         }
 
     }
+
+    */
 
     output(capacity, n_pallets, weights, values, usedItems);
 }
