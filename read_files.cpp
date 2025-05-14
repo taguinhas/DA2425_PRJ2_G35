@@ -1,5 +1,6 @@
 void read_truck(std::string truck, int &capacity, int &n_pallets){
 
+    //TODO Ler mais que 1 a 10
     if(truck.length() < 3){
         int nt = std::stoi(truck);
         if(nt >= 1 && nt < 10){

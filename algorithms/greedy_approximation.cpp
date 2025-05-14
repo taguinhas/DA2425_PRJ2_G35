@@ -1,3 +1,5 @@
+//TODO Arranjar empates
+
 void greedy(
     std::vector<int> &values,
     std::vector<int> &weights,
@@ -33,9 +35,6 @@ void greedy(
     }
 
     output(capacity, n_pallets, weights, values, usedItems);
-
-    //TODO dizer se está correto ou não, mostrar correto se não estiver,
-    //TODO perguntar à Doutora Vanessa como ela quer esta parte
 
     return;
 }

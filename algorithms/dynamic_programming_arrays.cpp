@@ -1,3 +1,5 @@
+//TODO Arranjar empates
+
 void dynamic_programming_arrays(
     std::vector<int> &values,
     std::vector<int> &weights,

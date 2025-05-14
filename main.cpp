@@ -26,6 +26,10 @@ void manage(
 {
     std::vector<bool> usedItems(n_pallets, false);
 
+    //TODO Contabilizar tempo de execucação dos algoritmos (só algoritmos)
+
+    //TODO Cortar execução se estiver a demorar mais de x tempo
+    
     switch(n) {
         case 1:
             brute_force(capacity, n_pallets, weights, values, usedItems);
@@ -53,6 +57,8 @@ int main() {
     std::cout << "Input the number of the file (from 1 to 10) with information about the truck and the pallets.\n";
 
     std::string number = "";
+
+    //TODO Tratar erro de leitura
     std::cin >> number;
 
     int capacity = 0;
@@ -60,6 +66,7 @@ int main() {
 
     read_truck(number, capacity, n_pallets);
 
+    //TODO Tratar erro de leitura
     std::vector<int> weights = {};
     std::vector<int> values = {};
 
@@ -79,6 +86,8 @@ int main() {
     test(capacity, n_pallets, weights, values);
 
     manage(option, capacity, n_pallets, weights, values);
+
+    //TODO Chamar código outra vez para permitir correr outras pallets ou outro algoritmo
 
     return 0;
     
