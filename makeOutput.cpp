@@ -3,7 +3,8 @@ void output(
     int &n_pallets,
     std::vector<int> &weights,
     std::vector<int> &values,
-    std::vector<bool> &usedItems
+    std::vector<bool> &usedItems,
+    int duration
 )
 {
     for(int i = 0; i < n_pallets; i++){
@@ -11,6 +12,8 @@ void output(
             std::cout << i+1 << ", " << weights[i] << ", " << values[i] << "\n";
         }
     }
+
+    std::cout << "The algorithm took " << duration << " microseconds.\n";
 
     return;
 }

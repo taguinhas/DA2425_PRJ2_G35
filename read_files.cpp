@@ -1,20 +1,15 @@
-void read_truck(std::string truck, int &capacity, int &n_pallets){
+void read_truck(int n, int &capacity, int &n_pallets){
 
-    if(truck.length() < 3){
-        int nt = std::stoi(truck);
-        if(nt >= 1 && nt < 10){
-            truck = "TruckAndPallets_0"+truck;
-        }
-    
-        else if(nt == 10){
-            truck = "TruckAndPallets_"+truck;
-        }
-    }
+    std::string truck = "";
+
+    if(n < 10){truck = "TruckAndPallets_0"+std::to_string(n);}
+    else{truck = "TruckAndPallets_"+std::to_string(n);}
 
     std::ifstream file("data/"+ truck + ".csv");
 
     if(!file.is_open()){
-        std::cerr << "File with number " << truck << " doesn't exist!" << std::endl;
+        std::cerr << "File " << truck << " doesn't exist! Please try again." << std::endl;
+        return;
     }
 
     std::string aux = "";
@@ -45,23 +40,18 @@ void read_truck(std::string truck, int &capacity, int &n_pallets){
 
 }
 
-void read_pallets(std::string pallets, std::vector<int> &weights, std::vector<int> &values){
+void read_pallets(int n, std::vector<int> &weights, std::vector<int> &values){
 
-    if(pallets.length() < 3) {
-        int pt = std::stoi(pallets);
-        if(pt >= 1 && pt < 10){
-            pallets = "Pallets_0"+pallets;
-        }
-    
-        if(pt == 10){
-            pallets = "Pallets_"+pallets;
-        }
-    }
+    std::string pallets = "";
+
+    if(n < 10){pallets = "Pallets_0"+std::to_string(n);}
+    else{pallets = "Pallets_"+std::to_string(n);}
 
     std::ifstream file("data/"+ pallets + ".csv");
 
     if(!file.is_open()){
-        std::cerr << "File with number " << pallets << " doesn't exist!" << std::endl;
+        std::cerr << "File " << pallets << " doesn't exist! Please try again." << std::endl;
+        return;
     }
 
     std::string aux = "";

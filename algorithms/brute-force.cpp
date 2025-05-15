@@ -5,12 +5,23 @@ void brute_force(
     std::vector<int> &values,
     std::vector<bool> &usedItems
 )
-{
+{   
+
+    int d = 0;
+    
+    std::chrono::time_point start = std::chrono::high_resolution_clock::now();
+    
     std::vector<bool> curCandidate(n_pallets, false);
 
     bool foundSol = false;
     int maxValue = 0;
-    while (true) {
+    while (d < 10000000) {
+
+        std::chrono::time_point stop = std::chrono::high_resolution_clock::now();
+
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+
+        d = duration.count();
 
         int totalValue = 0;
         int totalWeight = 0;
@@ -55,7 +66,19 @@ void brute_force(
         curCandidate[curIndex] = true;
     }
 
-    output(capacity, n_pallets, weights, values, usedItems);
+    if(d >= 10000000){
+        std::cout << "The program was terminated as it took longer than 10 seconds.\n";
+
+        return;
+    }
+
+    std::chrono::time_point stop = std::chrono::high_resolution_clock::now();
+
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+
+    d = duration.count();
+
+    output(capacity, n_pallets, weights, values, usedItems, d);
 
     return;
 
