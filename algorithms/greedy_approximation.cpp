@@ -8,6 +8,9 @@ void greedy(
     std::vector<bool> &usedItems
 )
 {
+
+    std::chrono::time_point start = std::chrono::high_resolution_clock::now();
+    
     std::vector<int> P(n_pallets);
 
     // Initialize the index vector P
@@ -34,7 +37,13 @@ void greedy(
         }
     }
 
-    output(capacity, n_pallets, weights, values, usedItems);
+    std::chrono::time_point stop = std::chrono::high_resolution_clock::now();
+
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+
+    int d = duration.count();
+
+    output(capacity, n_pallets, weights, values, usedItems, d);
 
     return;
 }

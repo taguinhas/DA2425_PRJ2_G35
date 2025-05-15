@@ -7,6 +7,7 @@
 #include <fstream>
 #include <algorithm>
 #include <stdexcept>
+#include <chrono>
 #include "read_files.cpp"
 #include "test.cpp"
 #include "makeOutput.cpp"
