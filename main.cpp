@@ -27,10 +27,6 @@ void manage(
 )
 {
     std::vector<bool> usedItems(n_pallets, false);
-
-    //TODO Contabilizar tempo de execucação dos algoritmos (só algoritmos)
-
-    //TODO Cortar execução se estiver a demorar mais de x tempo
     
     switch(n) {
         case 1:
