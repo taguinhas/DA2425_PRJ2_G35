@@ -3,8 +3,8 @@
 void greedy(
     std::vector<int> &values,
     std::vector<int> &weights,
-    int n_pallets,
-    int capacity,
+    int &n_pallets,
+    int &capacity,
     std::vector<bool> &usedItems
 )
 {

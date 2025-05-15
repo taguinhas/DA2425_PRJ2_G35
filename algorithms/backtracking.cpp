@@ -1,7 +1,7 @@
 void knapsackRec(
     std::vector<int> &values,
     std::vector<int> &weights,
-    int n_pallets,
+    int &n_pallets,
     int capacity,
     int curIndex,
     int curValue,
@@ -10,7 +10,7 @@ void knapsackRec(
     std::vector<bool> &usedItems
 )
 {
-    //todos os n_pallets itens foram testados no branch atual?
+    //all n_pallets itens foram testados no branch atual?
     if (curIndex == n_pallets) {
         //encontrei uma solução melhor?
         if (curValue > *maxValue) {

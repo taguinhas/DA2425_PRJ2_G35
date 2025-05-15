@@ -54,10 +54,10 @@ void manage(
 }
 
 void ask_algorithm(
-    int capacity,
-    int n_pallets,
-    std::vector<int> weights,
-    std::vector<int> values
+    int &capacity,
+    int &n_pallets,
+    std::vector<int> &weights,
+    std::vector<int> &values
 )
 {
     int option = 0;
@@ -91,12 +91,13 @@ void ask_algorithm(
     manage(option, capacity, n_pallets, weights, values);
 }
 
-void ask_pallets() {
-
-    int capacity = 0;
-    int n_pallets = 0;
-    std::vector<int> weights = {};
-    std::vector<int> values = {};
+void ask_pallets(
+    int &capacity,
+    int &n_pallets,
+    std::vector<int> &weights,
+    std::vector<int> &values
+)
+{
 
     do{
         std::cout << "Input the number of the file with information about the truck and the pallets.\n";
@@ -130,9 +131,51 @@ void ask_pallets() {
 
 int main() {
 
-    ask_pallets();
+    int option = 0;
 
-    //TODO Chamar código outra vez para permitir correr outras pallets ou outro algoritmo
+    int capacity = 0;
+    int n_pallets = 0;
+    std::vector<int> weights = {};
+    std::vector<int> values = {};
+
+    ask_pallets(capacity, n_pallets, weights, values);
+
+    do {
+        std::cout << "Do you wish to repeat the program?\n1. Yes, using the same truck and pallets.\n2. Yes, using different truck and pallets.\n3. Close program.\n";
+
+        std::string program = "";
+        
+        std::cin >> program;
+        
+        try{int n = std::stoi(program);}
+        catch (std::invalid_argument&){
+            std::cerr << "Error: A number wasn't detected. Please try again.\n";
+            continue;
+        }
+        catch (std::out_of_range&){
+            std::cerr << "Error: The number inserted is too large or too small. Please try again.\n";
+            continue;
+        }
+        
+        option = std::stoi(program);
+
+        if(option <= 0 || option > 3){
+            std::cout << "Invalid option. Please insert a valid option\n";
+        }
+
+        if(option == 1){
+            ask_algorithm(capacity, n_pallets, weights, values);
+        }
+
+        if(option == 2){
+            ask_pallets(capacity, n_pallets, weights, values);
+        }
+
+        if(option == 3){
+            return 0;
+        }
+    }
+    while (option != 3);
 
     return 0;
     
