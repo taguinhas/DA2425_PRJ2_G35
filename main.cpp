@@ -71,11 +71,11 @@ void ask_algorithm(
         try{int n = std::stoi(algorithm);}
         catch (std::invalid_argument&){
             std::cerr << "Error: A number wasn't detected. Please try again.\n";
-            return;
+            continue;
         }
         catch (std::out_of_range&){
             std::cerr << "Error: The number inserted is too large or too small. Please try again.\n";
-            return;
+            continue;
         }
         
         option = std::stoi(algorithm);
@@ -108,11 +108,11 @@ void ask_pallets() {
         try{int n = std::stoi(number);}
         catch (std::invalid_argument&){
             std::cerr << "Error: A number wasn't detected. Please try again.\n";
-            return;
+            continue;
         }
         catch (std::out_of_range&){
             std::cerr << "Error: The number inserted is too large or too small. Please try again.\n";
-            return;
+            continue;
         }
 
         int n = std::stoi(number);
