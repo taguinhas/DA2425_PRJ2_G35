@@ -1,3 +1,6 @@
+#include <iostream>
+#include <vector>
+
 void test(
     int &capacity,
     int &n_pallets,

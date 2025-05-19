@@ -1,5 +1,8 @@
 //TODO Arranjar empates
 
+#include <chrono>
+#include "../makeOutput.h"
+
 void dynamic_programming_arrays(
     std::vector<int> &values,
     std::vector<int> &weights,
