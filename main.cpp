@@ -35,7 +35,7 @@ void manage(
             greedy(values, weights, n_pallets, capacity, usedItems);
             break;
         case 6:
-            integer_linear_programming();
+            integer_linear_programming(values, weights, n_pallets, capacity, usedItems);
             break;
       }
 }
