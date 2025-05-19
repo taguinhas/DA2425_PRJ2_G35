@@ -1,27 +1,31 @@
 //TODO Arranjar empates
 
-void dynamic_programming_arrays(
+void dynamic_programming_maps(
     std::vector<int> &values,
     std::vector<int> &weights,
-    int &n_pallets,
-    int &capacity,
+    int n_pallets,
+    int capacity,
     std::vector<bool> &usedItems
 )
 {
+
     std::chrono::time_point start = std::chrono::high_resolution_clock::now();
 
     int d = 0;
 
-    //step 1: Initialize DP table (2D matrix) - using Base cases
-        //using item = 0 (base case)
-    std::vector<int> aux(capacity + 1, 0);
-    std::vector<std::vector<int>> maxValue(n_pallets + 1, aux);
+    //map will look like this {[n_pallets, capacity], res}
+    std::map<std::pair<int, int>, int> maxValue;
+    for (int i = 0; i < n_pallets + 1; i++){
+        for(int j = 0; j < capacity + 1; j++){
+            maxValue.insert({{i, j}, 0});
+        }
+    }
     
     //step 2: Compute the DP using maxValue(i, k)' function of a) - "Recursion"
-    for(int i = 1; i <= n_pallets; i++){
+    for(int i = 1; i < n_pallets; i++){
 
         if(d >= 500000){break;}
-        
+
         for(int k = 0; k <= capacity; k++){
 
             std::chrono::time_point stop = std::chrono::high_resolution_clock::now();
@@ -33,17 +37,17 @@ void dynamic_programming_arrays(
             if(d >= 500000){break;}
 
             if(weights[i] > k){
-                maxValue[i][k] = maxValue[i-1][k];
+                maxValue.at({i,k}) = maxValue.at({i-1, k});
             }
 
             else{
-                int aux = values[i] + maxValue[i - 1][k - weights[i]];
+                int aux = values[i] + maxValue.at({i - 1,k - weights[i]});
                 
-                if(aux > maxValue[i - 1][k]) {
-                    maxValue[i][k] = aux;
+                if(aux > maxValue.at({i - 1,k})) {
+                    maxValue.at({i,k}) = aux;
                 }
                 else{
-                    maxValue[i][k] = maxValue[i - 1][k];
+                    maxValue.at({i,k}) = maxValue.at({i - 1,k});
                 }
             }
         }
@@ -61,7 +65,7 @@ void dynamic_programming_arrays(
 
         if(remainingWeight == 0) {break;}
 
-        if(maxValue[i][remainingWeight] != maxValue[i - 1][remainingWeight]) {
+        if(maxValue.at({i,remainingWeight}) != maxValue.at({i - 1,remainingWeight})) {
             usedItems[i] = true;
             remainingWeight -= weights[i];
         }
@@ -75,5 +79,4 @@ void dynamic_programming_arrays(
     d = duration.count();
 
     output(capacity, n_pallets, weights, values, usedItems, d);
-
 }

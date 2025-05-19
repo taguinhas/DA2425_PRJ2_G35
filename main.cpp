@@ -8,14 +8,14 @@
 #include <algorithm>
 #include <stdexcept>
 #include <chrono>
-#include <unordered_map>
+#include <map>
 #include "read_files.cpp"
 #include "test.cpp"
 #include "makeOutput.cpp"
 #include "algorithms/backtracking.cpp"
 #include "algorithms/brute-force.cpp"
 #include "algorithms/dynamic_programming_arrays.cpp"
-#include "algorithms/dynamic_programming_hash-maps.cpp"
+#include "algorithms/dynamic_programming_maps.cpp"
 #include "algorithms/greedy_approximation.cpp"
 #include "algorithms/integer_linear_programming.cpp"
 
@@ -40,7 +40,7 @@ void manage(
             dynamic_programming_arrays(values, weights, n_pallets, capacity, usedItems);
             break;
         case 4:
-            dynamic_programming_hash_maps(values, weights, n_pallets, capacity, usedItems);
+            dynamic_programming_maps(values, weights, n_pallets, capacity, usedItems);
             break;
         case 5:
             greedy(values, weights, n_pallets, capacity, usedItems);
@@ -60,7 +60,7 @@ void ask_algorithm(
 {
     int option = 0;
     do {
-        std::cout << "Choose the algorithmic approach you wish to take:\n1. Brute-Force\n2. Backtracking\n3. Dynamic Programming (using arrays)\n4. Dynamic Programming (using hash-maps)\n5. Greedy Approach (approximation)\n6. Interger Linear Programming\n";
+        std::cout << "Choose the algorithmic approach you wish to take:\n1. Brute-Force\n2. Backtracking\n3. Dynamic Programming (using arrays)\n4. Dynamic Programming (using maps)\n5. Greedy Approach (approximation)\n6. Interger Linear Programming\n";
 
         std::string algorithm = "";
         
