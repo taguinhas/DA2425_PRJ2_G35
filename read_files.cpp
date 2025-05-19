@@ -1,3 +1,9 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <sstream>
+#include <vector>
+
 void read_truck(int n, int &capacity, int &n_pallets){
 
     std::string truck = "";

@@ -1,5 +1,10 @@
 //TODO Arranjar empates
 
+#include <chrono>
+#include <algorithm>
+#include <map>
+#include "../makeOutput.h"
+
 void dynamic_programming_maps(
     std::vector<int> &values,
     std::vector<int> &weights,
