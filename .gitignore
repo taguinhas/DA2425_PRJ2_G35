@@ -4,6 +4,8 @@
 .vscode
 .idea/
 m
+
+#to ignore files from glpk
 glpk-5.0/src/.libs/
 *.la
 *.o
