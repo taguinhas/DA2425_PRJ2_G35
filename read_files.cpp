@@ -42,6 +42,9 @@ void read_truck(int n, int &capacity, int &n_pallets){
 
 void read_pallets(int n, std::vector<int> &weights, std::vector<int> &values){
 
+    weights = {};
+    values = {};
+    
     std::string pallets = "";
 
     if(n < 10){pallets = "Pallets_0"+std::to_string(n);}
