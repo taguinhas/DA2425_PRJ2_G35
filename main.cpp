@@ -1,7 +1,6 @@
 #include <stdexcept>
 #include <chrono>
 #include "read_files.cpp"
-#include "test.cpp"
 #include "algorithms/backtracking.cpp"
 #include "algorithms/brute-force.cpp"
 #include "algorithms/dynamic_programming_arrays.cpp"
@@ -73,9 +72,7 @@ void ask_algorithm(
         }
     }
     while (option <= 0 || option > 6);
-
-    test(capacity, n_pallets, weights, values);
-
+    
     manage(option, capacity, n_pallets, weights, values);
 }
 
