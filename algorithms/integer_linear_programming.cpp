@@ -11,9 +11,6 @@ void integer_linear_programming(
 ){
     std::chrono::time_point start = std::chrono::high_resolution_clock::now();
 
-    double sizePenalty = 0.1;
-    double indexPenalty = 0.001;
-
     glp_prob *problem = glp_create_prob();
     glp_set_obj_dir(problem, GLP_MAX);
 
@@ -21,9 +18,12 @@ void integer_linear_programming(
     glp_add_cols(problem, n_pallets); //one variable for each pallet
 
     for (int i = 1; i <= n_pallets; i++){
-        glp_set_col_bnds(problem, i, GLP_DB, 0.0, 1.0); //each variable has a lower bound of 0
+        glp_set_col_bnds(problem, i, GLP_DB, 0.0, 1.0);
         glp_set_col_kind(problem, i, GLP_BV);
     }
+
+    double sizePenalty = 0.1;
+    double indexPenalty = 0.000005;
 
     for (int i = 1; i <= n_pallets; i++){
         double adjusted_coef = values[i - 1] - sizePenalty - i * indexPenalty;
@@ -31,7 +31,7 @@ void integer_linear_programming(
     }
 
 
-    glp_add_rows(problem, 1); //there is going to be one constraint for each pallet (<=1) and one for the total weight <= capacity
+    glp_add_rows(problem, 1); //there is going to be one constraint for the total weight <= capacity
 
     glp_set_row_bnds(problem, 1, GLP_UP, 0.0, capacity); //add constraint for max weight
 
@@ -59,7 +59,7 @@ void integer_linear_programming(
     int ret = glp_intopt(problem, &param);
 
     if(glp_intopt(problem, &param)){
-        std::cerr << "No optimal or feasible solution found within 10 seconds." << std::endl;
+        std::cerr << "The program was terminated as it took longer than 10 seconds.\n";
         glp_delete_prob(problem);
         return;
     }
