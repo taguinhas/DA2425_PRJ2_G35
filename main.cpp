@@ -49,7 +49,7 @@ void ask_algorithm(
 {
     int option = 0;
     do {
-        std::cout << "Choose the algorithmic approach you wish to take:\n1. Brute-Force\n2. Backtracking\n3. Dynamic Programming (using arrays)\n4. Dynamic Programming (using hash-maps)\n5. Greedy Approach (approximation)\n6. Interger Linear Programming\n";
+        std::cout << "Choose the algorithmic approach you wish to take:\n1. Brute-Force\n2. Backtracking\n3. Dynamic Programming (using arrays)\n4. Dynamic Programming (using hash-maps)\n5. Greedy Approach (approximation)\n6. Integer Linear Programming\n";
 
         std::string algorithm = "";
         
