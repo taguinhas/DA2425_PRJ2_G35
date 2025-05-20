@@ -13,7 +13,6 @@ glpk-5.0/src/.libs/
 *.a
 *.so
 *.dylib
-Makefile
 Makefile.in
 config.log
 config.status
