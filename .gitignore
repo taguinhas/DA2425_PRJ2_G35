@@ -6,13 +6,4 @@
 m
 
 #to ignore files from glpk
-glpk-5.0/src/.libs/
-*.la
-*.o
-*.lo
-*.a
-*.so
-*.dylib
-Makefile.in
-config.log
-config.status
+glpk-5.0/
