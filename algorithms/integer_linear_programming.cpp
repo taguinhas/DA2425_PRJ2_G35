@@ -71,6 +71,7 @@ void integer_linear_programming(
     glp_delete_prob(problem);
 
     std::chrono::time_point stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
 
-    output(capacity, n_pallets, weights, values, usedItems, std::chrono::duration_cast<std::chrono::microseconds>(stop-start).count());
+    output(capacity, n_pallets, weights, values, usedItems, duration.count());
 }
