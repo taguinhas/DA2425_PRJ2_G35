@@ -19,14 +19,6 @@ void dynamic_programming_arrays(
         //using item = 0 (base case)
     std::vector<int> aux(capacity + 1, 0);
     std::vector<std::vector<int>> maxValue(n_pallets + 1, aux);
-
-    int j = 0;
-    for(auto a : maxValue){
-        for (auto i : a){
-            j++;
-        }
-    }
-
     
     //step 2: Compute the DP using maxValue(i, k)' function of a) - "Recursion"
     for(int i = 1; i < n_pallets; i++){
