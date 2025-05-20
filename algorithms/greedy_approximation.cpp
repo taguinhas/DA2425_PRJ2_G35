@@ -22,7 +22,7 @@ void greedy(
         P[i] = i;
     }
 
-    // Sort indices by value-to-weight ratio in descending order
+    // Sort indices by weight-to-profit in descending order
     std::sort(P.begin(), P.end(), [&](int i, int j) {
 
         return  static_cast<double>(weights[i] / values[i]) < static_cast<double>(weights[j] / values[j]);
