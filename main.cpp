@@ -1,5 +1,5 @@
 #include <stdexcept>
-#include <chrono>
+#include <cmath>
 #include "read_files.cpp"
 #include "algorithms/backtracking.cpp"
 #include "algorithms/brute-force.cpp"
@@ -64,6 +64,11 @@ void ask_algorithm(
             std::cerr << "Error: The number inserted is too large or too small. Please try again.\n";
             continue;
         }
+
+        if(std::stof(algorithm) != std::floor(std::stof(algorithm))){
+            std::cout << "Error: The number inserted is not an integer. Please try again.\n";
+            continue;
+        }
         
         option = std::stoi(algorithm);
 
@@ -72,7 +77,6 @@ void ask_algorithm(
         }
     }
     while (option <= 0 || option > 6);
-    
     manage(option, capacity, n_pallets, weights, values);
 }
 
@@ -98,6 +102,11 @@ void ask_pallets(
         }
         catch (std::out_of_range&){
             std::cerr << "Error: The number inserted is too large or too small. Please try again.\n";
+            continue;
+        }
+
+        if(std::stof(number) != std::floor(std::stof(number))){
+            std::cout << "Error: The number inserted is not an integer. Please try again.\n";
             continue;
         }
 
@@ -153,6 +162,7 @@ int main() {
         }
 
         if(option == 2){
+            n_pallets = 0;
             ask_pallets(capacity, n_pallets, weights, values);
         }
 
