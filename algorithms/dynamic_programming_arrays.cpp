@@ -30,8 +30,6 @@ void dynamic_programming_arrays(
     
     //step 2: Compute the DP using maxValue(i, k)' function of a) - "Recursion"
     for(int i = 1; i < n_pallets; i++){
-
-        //if(d >= 500000){break;}
         
         for(int k = 0; k <= capacity; k++){
 
@@ -41,7 +39,7 @@ void dynamic_programming_arrays(
 
             d = duration.count();
 
-            if(d >= 500000){break;}
+            if(d >= 10000000){break;}
 
             if(weights[i] > k){
                 maxValue[i][k] = maxValue[i-1][k];
@@ -60,11 +58,11 @@ void dynamic_programming_arrays(
         }
     }
 
-    /*if(d >= 500000){
-        std::cout << "The program was terminated as it took longer than 0.5 seconds.\n";
+    if(d >= 10000000){
+        std::cout << "The program was terminated as it took longer than 10 seconds.\n";
 
         return;
-    }*/
+    }
 
     //step 3: Build the Solution
     int remainingWeight = capacity;

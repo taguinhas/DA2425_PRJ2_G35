@@ -29,8 +29,6 @@ void dynamic_programming_maps(
     //step 2: Compute the DP using maxValue(i, k)' function of a) - "Recursion"
     for(int i = 1; i < n_pallets; i++){
 
-        if(d >= 500000){break;}
-
         for(int k = 0; k <= capacity; k++){
 
             std::chrono::time_point stop = std::chrono::high_resolution_clock::now();
@@ -39,7 +37,7 @@ void dynamic_programming_maps(
 
             d = duration.count();
 
-            if(d >= 500000){break;}
+            if(d >= 10000000){break;}
 
             if(weights[i] > k){
                 maxValue.at({i,k}) = maxValue.at({i-1, k});
@@ -58,8 +56,8 @@ void dynamic_programming_maps(
         }
     }
 
-    if(d >= 500000){
-        std::cout << "The program was terminated as it took longer than 0.5 seconds.\n";
+    if(d >= 10000000){
+        std::cout << "The program was terminated as it took longer than 10 seconds.\n";
 
         return;
     }
