@@ -9,7 +9,7 @@ void brute_force(
     int &n_pallets,
     std::vector<int> &weights,
     std::vector<int> &values,
-    std::vecotr<bool> &usedItems
+    std::vector<bool> &usedItems
 );
 
 void knapsackBT(
