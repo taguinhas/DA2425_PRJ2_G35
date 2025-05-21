@@ -1,12 +1,8 @@
 #include <stdexcept>
 #include <cmath>
 #include "read_files.cpp"
-#include "algorithms/backtracking.cpp"
-#include "algorithms/brute-force.cpp"
-#include "algorithms/dynamic_programming_arrays.cpp"
-#include "algorithms/dynamic_programming_maps.cpp"
-#include "algorithms/greedy_approximation.cpp"
-#include "algorithms/integer_linear_programming.cpp"
+#include "algorithms.h"
+#include "main.h"
 
 void manage(
     int n,

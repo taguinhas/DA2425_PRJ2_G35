@@ -1,5 +1,6 @@
 #include <chrono>
 #include "../makeOutput.h"
+#include "../algorithms.h"
 
 void brute_force(
     int &capacity,

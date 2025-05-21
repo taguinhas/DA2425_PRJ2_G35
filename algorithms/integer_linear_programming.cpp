@@ -1,6 +1,7 @@
 #include <glpk.h>
 #include <chrono>
 #include "../makeOutput.h"
+#include "../algorithms.h"
 
 void integer_linear_programming(
     std::vector<int> &values,
@@ -8,7 +9,8 @@ void integer_linear_programming(
     int &n_pallets,
     int &capacity,
     std::vector<bool> &usedItems
-){
+)
+{
     std::chrono::time_point start = std::chrono::high_resolution_clock::now();
 
     glp_prob *problem = glp_create_prob();

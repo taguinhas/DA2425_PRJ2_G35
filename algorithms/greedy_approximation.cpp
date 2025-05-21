@@ -1,8 +1,7 @@
-//TODO Arranjar empates
-
 #include <chrono>
 #include <algorithm>
 #include "../makeOutput.h"
+#include "../algorithms.h"
 
 void greedy(
     std::vector<int> &values,

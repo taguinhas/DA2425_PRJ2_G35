@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include "read_files.h"
 
 void read_truck(int n, int &capacity, int &n_pallets){
 

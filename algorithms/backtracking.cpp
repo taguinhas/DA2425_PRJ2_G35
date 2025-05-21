@@ -1,6 +1,7 @@
 #include <chrono>
 #include <algorithm>
 #include "../makeOutput.h"
+#include "../algorithms.h"
 
 void knapsackRec(
     std::vector<int> &values,

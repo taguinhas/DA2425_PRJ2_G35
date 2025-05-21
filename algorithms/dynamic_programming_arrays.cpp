@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include "../makeOutput.h"
+#include "../algorithms.h"
 
 void dynamic_programming_arrays(
     std::vector<int> &values,

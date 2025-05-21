@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <map>
 #include "../makeOutput.h"
+#include "../algorithms.h"
 
 void dynamic_programming_maps(
     std::vector<int> &values,
@@ -69,8 +70,15 @@ void dynamic_programming_maps(
         if(remainingWeight == 0) {break;}
 
         if(maxValue.at({i,remainingWeight}) != maxValue.at({i - 1,remainingWeight})) {
-            usedItems[i] = true;
-            remainingWeight -= weights[i];
+            for(int a = 0; a < n_pallets; a++){
+                if(values[a] == values[i] && weights[a] == weights[i]){
+                    if(!usedItems[a]){
+                        usedItems[a] = true;
+                        remainingWeight -= weights[a];
+                        break;
+                    }
+                }
+            }
         }
 
     }
